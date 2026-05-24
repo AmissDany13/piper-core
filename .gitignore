@@ -1,0 +1,16 @@
+# Python
+python_microservices/venv/
+python_microservices/__pycache__/
+*.pyc
+
+# Node & Tauri (HUD)
+piper-hud/node_modules/
+piper-hud/dist/
+piper-hud/src-tauri/target/
+
+# Bases de datos y Orquestador (¡Nunca subir a GitHub!)
+pg_data/
+n8n_data/
+
+# Secretos y variables de entorno
+.env
