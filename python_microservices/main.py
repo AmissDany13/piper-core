@@ -1,14 +1,26 @@
 import asyncio
 import asyncpg
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi.middleware.cors import CORSMiddleware  # <-- 1. NUEVA IMPORTACIÓN
 from pydantic import BaseModel
 import subprocess
 import logging
+from typing import List
 
 app = FastAPI(title="Piper Local Core")
-logging.basicConfig(level=logging.INFO)
 
-# Credenciales de tu base de datos local
+# --- 2. NUEVO: Políticas de seguridad (CORS) ---
+# Esto le dice al servidor que acepte la conexión del puerto 1420
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+# -----------------------------------------------
+
+# (A partir de aquí, deja el resto de tu código exactamente igual...)
 DB_DSN = "postgresql://admin:adminpassword@localhost:5432/piper_db"
 
 class ContextPayload(BaseModel):
