@@ -14,7 +14,7 @@ app = FastAPI(title="Piper Local Core")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  
-    allow_credentials=True,
+    allow_credentials=False,  # <--- CAMBIAR ESTO A FALSE
     allow_methods=["*"],
     allow_headers=["*"],
 )

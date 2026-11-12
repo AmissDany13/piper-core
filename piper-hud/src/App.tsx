@@ -9,11 +9,11 @@ function App() {
 
   useEffect(() => {
     let ws: WebSocket;
-    let reconnectTimer: NodeJS.Timeout;
+    let reconnectTimer: number | undefined;
 
     const connectWebSocket = () => {
       // Usamos localhost en lugar de 127.0.0.1 para evitar bloqueos de Windows
-      ws = new WebSocket('ws://localhost:8000/api/ws/hud');
+      ws = new WebSocket('ws://127.0.0.1:8000/api/ws/hud');
 
       ws.onopen = () => {
         setStatus({ title: "PIPER CORE", message: "Sistemas en línea. Esperando..." });
